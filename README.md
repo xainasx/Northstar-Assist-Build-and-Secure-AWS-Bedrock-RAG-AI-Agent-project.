@@ -23,13 +23,13 @@ northstar-assist-security/
 │       │   └── release_notes_v2.5.0.txt
 │       └── xlsx/
 │           └── budget_tracking_q3_2023_README.txt
-└── deliverables/                       # Completed project deliverables
-    ├── ML-BOM_Northstar_Assist.md      # Task 2: AI Asset Inventory
-    ├── STRIDE-ML_Northstar_Assist.md   # Task 3: Threat Model
-    ├── IAM_Hardening_Summary.md        # Task 4: Least-Privilege Access Controls
-    ├── Safety_Controls_Description.md  # Task 5: Bedrock Guardrails Configuration
-    ├── Monitoring_Plan_and_Incident_Response.md  # Task 6: Monitoring + IR Playbook
-    └── Launch_Readiness_Report.md      # Task 7: Launch-Readiness Report
+├── Task1_agent_test_transcription.md # Task 1: Agent Test
+├── ML-BOM_Northstar_Assist.md      # Task 2: AI Asset Inventory
+├── STRIDE-ML_Northstar_Assist.md   # Task 3: Threat Model
+├── IAM_Hardening_Summary.md        # Task 4: Least-Privilege Access Controls
+├── Safety_Controls_Description.md  # Task 5: Bedrock Guardrails Configuration
+├── Monitoring_Plan_and_Incident_Response.md  # Task 6: Monitoring + IR Playbook
+└── Launch_Readiness_Report.md      # Task 7: Launch-Readiness Report
 ```
 
 ## Tasks
