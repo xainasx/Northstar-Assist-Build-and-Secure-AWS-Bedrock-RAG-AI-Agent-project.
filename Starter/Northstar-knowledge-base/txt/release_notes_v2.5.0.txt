@@ -1,0 +1,100 @@
+NORTHSTAR PLATFORM — RELEASE NOTES
+Version: 2.5.0
+Release Date: 12 June 2023
+Release Manager: Priya Patel
+
+===========================================================================
+OVERVIEW
+===========================================================================
+
+Platform v2.5.0 is a major release introducing enhanced webhook management, improved API 
+rate limiting, and several performance optimisations. This release also includes security 
+patches addressing two medium-severity vulnerabilities.
+
+===========================================================================
+NEW FEATURES
+===========================================================================
+
+1. WEBHOOK MANAGEMENT CONSOLE (BETA)
+   - New UI for creating, testing, and monitoring webhooks
+   - Webhook delivery logs with retry status and payload inspection
+   - Support for webhook signing (HMAC-SHA256) for payload verification
+   - Configurable retry policies (exponential backoff, max 5 retries)
+   API: POST /v2/webhooks, GET /v2/webhooks/{id}/deliveries
+
+2. ENHANCED API RATE LIMITING
+   - Per-endpoint rate limits (previously global only)
+   - Rate limit headers now included in all API responses:
+     X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset
+   - New "burst" allowance for short traffic spikes (2x limit for 10 seconds)
+   - Rate limit configuration available via API for enterprise tier customers
+
+3. BULK OPERATIONS API
+   - New endpoints for batch processing:
+     POST /v2/bulk/create (up to 100 records per request)
+     POST /v2/bulk/update (up to 100 records per request)
+     POST /v2/bulk/delete (up to 200 records per request)
+   - Async processing with job status tracking
+   - Results delivered via webhook or polling
+
+===========================================================================
+IMPROVEMENTS
+===========================================================================
+
+- API response times improved by 23% (P95: 180ms down from 234ms)
+- Dashboard loading time reduced by 40% through lazy loading and caching
+- Search indexing now processes updates within 30 seconds (down from 5 minutes)
+- Improved error messages for validation failures (now include field-level details)
+- Audit log now captures IP address and user agent for all write operations
+
+===========================================================================
+SECURITY PATCHES
+===========================================================================
+
+- CVE-2023-NT-001 (Medium): Fixed IDOR vulnerability in team member endpoint that could 
+  allow authenticated users to view other teams' member lists. Reported by internal 
+  security audit. CVSS: 5.4
+  
+- CVE-2023-NT-002 (Medium): Fixed insufficient input validation on custom field names 
+  that could allow stored XSS in the dashboard. Reported via bug bounty programme. CVSS: 4.8
+
+===========================================================================
+BREAKING CHANGES
+===========================================================================
+
+- Webhook payload format updated: `event_type` field renamed to `event.type` (nested format)
+  Migration guide: docs.northstar-tech.co.uk/webhooks/v2-migration
+- Deprecated: /v1/webhooks endpoints will be removed in v2.7.0 (estimated September 2023)
+- Rate limit defaults changed: Free tier reduced from 1000 to 500 requests/hour
+
+===========================================================================
+KNOWN ISSUES
+===========================================================================
+
+- Bulk delete operations may timeout for batches >150 records on accounts with complex 
+  cascade rules. Workaround: reduce batch size to 100.
+- Webhook test delivery may show "pending" status for up to 60 seconds before confirming 
+  delivery (cosmetic issue, delivery is immediate).
+
+===========================================================================
+UPGRADE INSTRUCTIONS
+===========================================================================
+
+This release requires no manual migration steps for most customers. Customers using 
+webhook integrations should review the payload format change above.
+
+API version header: Accept: application/vnd.northstar.v2+json
+
+Full API documentation: docs.northstar-tech.co.uk/api/v2.5.0
+Changelog: github.com/northstar-tech/platform/blob/main/CHANGELOG.md
+
+===========================================================================
+NEXT RELEASE
+===========================================================================
+
+v2.6.0 is planned for August 2023 and will include:
+- Enterprise tier features (custom domains, SSO configuration API)
+- GraphQL API (beta)
+- Enhanced audit logging with event streaming
+
+Questions or issues? Contact support@northstar-tech.co.uk or your account manager.

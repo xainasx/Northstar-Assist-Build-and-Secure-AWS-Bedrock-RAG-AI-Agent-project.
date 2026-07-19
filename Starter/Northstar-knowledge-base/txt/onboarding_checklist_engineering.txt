@@ -1,0 +1,90 @@
+NORTHSTAR TECHNOLOGIES — ENGINEERING ONBOARDING CHECKLIST
+Version: 3.2
+Last Updated: 1 June 2023
+Owner: People Operations + Engineering
+
+Welcome to Northstar Technologies! This checklist covers everything you need to get set up 
+in your first two weeks as a member of the Engineering team.
+
+===========================================================================
+WEEK 1: ACCESS AND ENVIRONMENT SETUP
+===========================================================================
+
+DAY 1 — ACCOUNTS AND ACCESS
+- [ ] Collect laptop from IT (Floor 2, London office / shipped to remote employees)
+- [ ] Set up Okta SSO account (invitation sent to personal email before start date)
+- [ ] Configure multi-factor authentication (MFA) — MANDATORY
+- [ ] Access the following systems via Okta:
+      - Slack (join #engineering, #general, #random, #incidents)
+      - GitHub (Northstar-Tech organisation)
+      - Jira (Engineering project board)
+      - Confluence (Engineering wiki)
+      - AWS Console (read-only access initially)
+- [ ] Set up corporate email (firstname.lastname@northstar-tech.co.uk)
+- [ ] Review and sign: Acceptable Use Policy, Data Handling Policy, Security Policy
+
+DAY 2 — DEVELOPMENT ENVIRONMENT
+- [ ] Install required tools:
+      - Docker Desktop
+      - VS Code (or preferred IDE)
+      - AWS CLI v2
+      - kubectl
+      - Terraform (v1.5+)
+      - Go 1.21+ and/or Python 3.11+
+- [ ] Clone the main platform repository: github.com/northstar-tech/platform
+- [ ] Run the local development setup script: ./scripts/dev-setup.sh
+- [ ] Verify local environment: run test suite (make test-local)
+- [ ] Join the VPN (instructions in Confluence: Engineering > VPN Setup)
+
+DAY 3 — ARCHITECTURE OVERVIEW
+- [ ] Read the Architecture Decision Records (ADRs) in Confluence
+- [ ] Review system architecture diagram (Confluence: Engineering > Architecture)
+- [ ] Attend 1:1 with your team lead — discuss first sprint goals
+- [ ] Shadow a code review session
+
+DAY 4-5 — FIRST CONTRIBUTION
+- [ ] Pick up a "good first issue" from the Jira backlog
+- [ ] Create a feature branch and submit your first PR
+- [ ] Complete the PR review checklist
+- [ ] Attend team standup and sprint planning
+
+===========================================================================
+WEEK 2: DEEPER INTEGRATION
+===========================================================================
+
+DAY 6-7 — OBSERVABILITY AND ONCALL
+- [ ] Get access to Datadog dashboards
+- [ ] Review the on-call runbook (Confluence: Engineering > On-Call)
+- [ ] Shadow the current on-call engineer for one shift
+- [ ] Review recent incident reports (last 3 months)
+
+DAY 8-9 — SECURITY AND COMPLIANCE
+- [ ] Complete Security Awareness Training (via KnowBe4 — link in Okta)
+- [ ] Review the Secure Development Guidelines (Confluence: Security > Dev Guidelines)
+- [ ] Understand our branch protection and CI/CD pipeline security
+- [ ] Set up commit signing (GPG keys)
+
+DAY 10 — WRAP-UP
+- [ ] 1:1 with VP Engineering (Marcus Webb) — intro and Q&A
+- [ ] Complete onboarding feedback survey
+- [ ] Update your Slack profile with role, team, and pronouns
+- [ ] Celebrate with the team! 🎉
+
+===========================================================================
+KEY CONTACTS
+===========================================================================
+- VP Engineering: Marcus Webb (marcus.webb@northstar-tech.co.uk)
+- People Operations: Hannah Morris (hannah.morris@northstar-tech.co.uk)
+- IT Support: it-support@northstar-tech.co.uk / Slack #it-help
+- Security Team: security@northstar-tech.co.uk / Slack #security
+- Your Onboarding Buddy: Assigned on Day 1 by your team lead
+
+===========================================================================
+IMPORTANT POLICIES (read before end of Week 1)
+===========================================================================
+- Acceptable Use Policy: Confluence > Policies > AUP
+- Data Classification Policy: Confluence > Policies > Data Classification
+- Incident Response Plan: Confluence > Security > Incident Response
+- Remote Working Policy: Confluence > People > Remote Working
+
+Questions? Reach out to your onboarding buddy or post in #engineering-onboarding on Slack.

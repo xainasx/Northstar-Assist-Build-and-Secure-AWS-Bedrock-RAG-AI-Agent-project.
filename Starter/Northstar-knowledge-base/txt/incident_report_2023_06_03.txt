@@ -1,0 +1,61 @@
+NORTHSTAR TECHNOLOGIES — INCIDENT REPORT
+Incident ID: INC-2023-0603-001
+Severity: P2 (High)
+Status: RESOLVED
+Date Opened: 3 June 2023, 14:22 BST
+Date Resolved: 3 June 2023, 16:48 BST
+Duration: 2 hours 26 minutes
+
+INCIDENT SUMMARY
+Partial service degradation affecting the Northstar Platform API. Approximately 30% of API 
+requests returned 503 errors for a 2-hour window on Saturday 3 June 2023.
+
+IMPACT
+- Affected services: Platform API (v2.4.2), Customer Dashboard, Webhook delivery
+- Affected customers: ~340 accounts experienced intermittent errors
+- Data loss: None confirmed
+- SLA impact: Monthly uptime dropped from 99.98% to 99.91% (still within SLA threshold of 99.9%)
+
+TIMELINE (all times BST)
+14:22 — PagerDuty alert triggered: API error rate exceeded 5% threshold
+14:25 — On-call engineer (Tom Richardson) acknowledged alert
+14:32 — Initial investigation: identified connection pool exhaustion on primary database cluster
+14:45 — Root cause identified: long-running analytics query from internal reporting job 
+         consuming excessive connections
+14:50 — Mitigation started: killed long-running query, scaled connection pool
+15:10 — Error rate began declining
+15:35 — Error rate returned to baseline (<0.1%)
+16:48 — Incident closed after 1-hour monitoring period confirmed stability
+
+ROOT CAUSE
+A scheduled internal analytics job (run by the data team) executed a complex aggregation 
+query that ran for 23 minutes, consuming 45 of the 50 available database connections in the 
+primary pool. This left insufficient connections for production API traffic, causing 503 
+errors when the connection pool was exhausted.
+
+Contributing factors:
+1. The analytics query was not routed to the read replica (misconfiguration in the job scheduler)
+2. Connection pool limits had not been updated after the last capacity increase
+3. No query timeout was configured for the analytics database user
+
+RESOLUTION
+Immediate:
+- Killed the long-running query
+- Increased connection pool from 50 to 100 connections
+- Restarted affected API pods
+
+Follow-up actions:
+- [Data Team] Route all analytics queries to read replica — due 9 June
+- [SRE] Implement 5-minute query timeout for non-production database users — due 9 June
+- [SRE] Add connection pool utilisation metric to dashboard — due 16 June
+- [Platform] Evaluate PgBouncer for connection pooling — due 30 June
+
+LESSONS LEARNED
+1. Internal workloads should be isolated from production traffic paths
+2. Connection pool monitoring should have tighter alerting thresholds
+3. Database users should have appropriate resource limits configured
+
+INCIDENT COMMANDER: Tom Richardson (SRE Lead)
+COMMUNICATIONS LEAD: Aisha Okafor (Staff Engineer)
+REPORT AUTHOR: Tom Richardson
+REVIEWED BY: Marcus Webb (VP Engineering)

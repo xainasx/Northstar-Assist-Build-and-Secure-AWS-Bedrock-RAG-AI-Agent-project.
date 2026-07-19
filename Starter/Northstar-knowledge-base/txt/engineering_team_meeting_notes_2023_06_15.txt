@@ -1,0 +1,104 @@
+NORTHSTAR TECHNOLOGIES — ENGINEERING TEAM MEETING NOTES
+Date: 15 June 2023
+Location: London Office, Floor 4 / Zoom
+Attendees: Marcus Webb (VP Engineering), Priya Patel (Director, Platform), James Liu (Director, AI/ML), 
+           Aisha Okafor (Staff Engineer), Tom Richardson (SRE Lead), Dev Kapoor (Security Lead)
+
+AGENDA
+1. Sprint review and velocity update
+2. Platform v2.5.0 release retrospective
+3. AI assistant project update
+4. Infrastructure cost optimisation
+5. Hiring pipeline
+
+---
+
+1. SPRINT REVIEW AND VELOCITY UPDATE
+
+Marcus: Velocity is up 12% from last sprint. Good progress on the auth service migration.
+
+Priya: Platform team completed 47 of 52 planned story points. The remaining items were 
+deferred due to a dependency on the new API gateway configuration.
+
+James: AI/ML team is on track for the knowledge base prototype. We've selected Amazon Bedrock 
+as the foundation model provider and are evaluating embedding models this week.
+
+---
+
+2. PLATFORM V2.5.0 RELEASE RETROSPECTIVE
+
+Key takeaways from the v2.5.0 release:
+- Deployment completed in 45 minutes (down from 2 hours in v2.4.0)
+- Zero customer-facing incidents during rollout
+- One internal issue: staging environment cache invalidation took longer than expected
+
+Action items:
+- Tom to investigate cache invalidation timing
+- Priya to update runbook for cache-related deployments
+
+---
+
+3. AI ASSISTANT PROJECT UPDATE (Northstar Assist)
+
+James: We're moving forward with the RAG architecture using Amazon Bedrock. Current plan:
+- Foundation model: Claude 3.7 Sonnet (via Bedrock)
+- Embedding model: Amazon Titan Text Embeddings V2
+- Vector store: Amazon OpenSearch Serverless
+- Knowledge source: Internal documents stored in S3
+
+Dev: I want to flag early that we need a proper security review before this goes live. 
+Key concerns:
+- Prompt injection risks (both direct and indirect via documents)
+- IAM role scoping for the agent
+- Data classification of documents going into the knowledge base
+- Logging and monitoring for anomalous queries
+
+James: Agreed. Let's plan a threat modelling session for next sprint.
+
+Marcus: I'll put Dev and James together to lead that. Target: security review complete 
+before any employee-facing rollout.
+
+Timeline:
+- Week of 19 June: Complete embedding model evaluation
+- Week of 26 June: Knowledge base prototype with sample documents
+- Week of 3 July: Internal security review begins
+- Week of 17 July: Controlled pilot with Engineering team (pending security approval)
+
+---
+
+4. INFRASTRUCTURE COST OPTIMISATION
+
+Tom: Current monthly AWS spend is £127,000. Main drivers:
+- EC2/EKS compute: £68,000
+- RDS: £23,000
+- S3 + data transfer: £18,000
+- OpenSearch: £12,000
+- Other: £6,000
+
+Savings initiatives underway:
+- Reserved instance purchases (estimated £15,000/month savings)
+- Right-sizing underutilised instances (estimated £8,000/month savings)
+- S3 lifecycle policies for old log data
+
+---
+
+5. HIRING PIPELINE
+
+Marcus: Current open positions in Engineering:
+- 2x Senior Backend Engineers (Go/Python)
+- 1x Staff Platform Engineer
+- 2x SRE (one London, one remote)
+- 1x AI/ML Engineer
+- 1x Security Engineer (AI focus)
+
+Interview pipeline is healthy. We have 14 candidates in final rounds across these roles.
+
+---
+
+ACTIONS
+- [Tom] Investigate staging cache invalidation issue — due 22 June
+- [Priya] Update deployment runbook — due 22 June
+- [Dev + James] Schedule threat modelling session for Northstar Assist — due 26 June
+- [Marcus] Approve revised AWS budget with cost savings — due 30 June
+
+Next meeting: 22 June 2023, 10:00 BST

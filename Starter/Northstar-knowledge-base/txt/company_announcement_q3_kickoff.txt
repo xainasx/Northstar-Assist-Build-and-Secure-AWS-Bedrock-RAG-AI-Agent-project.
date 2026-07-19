@@ -1,0 +1,45 @@
+NORTHSTAR TECHNOLOGIES — INTERNAL COMMUNICATION
+Subject: Q3 2023 Company Kickoff
+Date: 3 July 2023
+From: Sarah Chen, CEO
+To: All Employees
+
+Team,
+
+I'm excited to kick off Q3 2023 with some important updates and priorities for the quarter ahead.
+
+Q2 RESULTS SUMMARY
+We closed Q2 with strong performance across all business units:
+- ARR grew 18% quarter-over-quarter to $42M
+- Net retention rate held steady at 112%
+- Engineering shipped 3 major platform releases on schedule
+- Customer satisfaction (NPS) improved from 62 to 67
+
+Q3 PRIORITIES
+
+1. Platform Reliability
+   Our SRE team will be focused on achieving 99.95% uptime across all production services. We've invested in additional observability tooling and hired two senior SREs to support this goal.
+
+2. AI Integration Initiative
+   We are launching our internal AI assistant programme, starting with "Northstar Assist" for employee self-service. The AI Security team will lead the security review before any internal rollout. More details to come from the Engineering team.
+
+3. Customer Expansion
+   Sales and Customer Success will focus on expanding within our top 50 accounts. The new enterprise tier launching in August will be key to this effort.
+
+4. Talent and Culture
+   We're opening 35 new positions across Engineering, Product, and Sales. Referral bonuses have been increased to £3,000 for technical roles and £1,500 for all other positions.
+
+IMPORTANT DATES
+- 14 July: Q3 OKR finalisation deadline
+- 1 August: Enterprise tier launch
+- 15 September: Q3 all-hands and mid-quarter review
+- 29 September: Q3 close
+
+OFFICE UPDATES
+The London office renovation is complete. Floors 3 and 4 are now open with new collaboration spaces. Bristol office expansion starts in August.
+
+Thank you all for your hard work in Q2. Let's carry that momentum forward.
+
+Best,
+Sarah Chen
+CEO, Northstar Technologies
